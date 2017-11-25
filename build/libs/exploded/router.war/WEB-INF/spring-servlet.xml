@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+
+    <context:annotation-config/>
+    <context:component-scan base-package="cn.winter.demo.controller"/>
+
+
+    <mvc:annotation-driven/>
+
+    <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">-->
+        <!--<property name="messageConverters">-->
+            <!--<list>-->
+                <!--<ref bean="mappingJacksonHttpMessageConverter"/>-->
+                <!--&lt;!&ndash; json转换器 &ndash;&gt;-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--<bean id="mappingJacksonHttpMessageConverter"-->
+          <!--class="cn.winter.demo.convert.MaikeMappingJackson2HttpMessagConverter"/>-->
+
+
+    <!-- 拦截器 -->
+    <!--<mvc:interceptors>-->
+        <!--&lt;!&ndash; 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 &ndash;&gt;-->
+        <!--<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>-->
+        <!--&lt;!&ndash; 如果不定义 mvc:mapping path 将拦截所有的URL请求&ndash;&gt;-->
+        <!--<bean class="cn.idongjia.router.filter.UserAccessInterceptor"/>-->
+
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/**"/>-->
+            <!--<bean class="cn.idongjia.router.filter.ExecuteTimeInterceptor">-->
+                <!--&lt;!&ndash; slow log default 500ms but logger default is not open &ndash;&gt;-->
+                <!--<constructor-arg type="java.lang.Long" value="500"/>-->
+                <!--<constructor-arg type="java.lang.Boolean" value="true"/>-->
+            <!--</bean>-->
+        <!--</mvc:interceptor>-->
+
+    <!--</mvc:interceptors>-->
+
+
+    <!--<bean id="validationInterceptor" class="cn.idongjia.router.filter.ValidationInterceptor"/>-->
+
+    <!-- 定义AOP配置 -->
+    <!--<aop:config>-->
+        <!--&lt;!&ndash; 定义一个切入点 &ndash;&gt;-->
+        <!--<aop:pointcut expression="execution (* cn.winter.demo.controller.*.*(..))"-->
+                      <!--id="controllers"/>-->
+        <!--&lt;!&ndash; 对切入点和事务的通知，进行适配 &ndash;&gt;-->
+        <!--&lt;!&ndash;<aop:advisor advice-ref="validationInterceptor" pointcut-ref="controllers"/>&ndash;&gt;-->
+    <!--</aop:config>-->
+
+    <!-- 校验器 -->
+    <!--<bean id="validator"-->
+          <!--class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">-->
+        <!--&lt;!&ndash; hibernate校验器 &ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>&ndash;&gt;-->
+    <!--</bean>-->
+
+
+</beans>
